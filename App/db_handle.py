@@ -7,9 +7,12 @@ def get_con():
 	cursor = connection.cursor()
 	return connection,cursor
 
-connection,cursor = get_con()
-cursor.execute("create table items (item_id integer primary key autoincrement,  user_id integer,title varchar(15),description varchar(200),tag varchar(15),date_to_buy date);")
-connection.commit();
+try:
+	connection,cursor = get_con()
+	cursor.execute("create table items (item_id integer primary key autoincrement,  user_id integer,title varchar(15),description varchar(200),tag varchar(15),date_to_buy date);")
+	connection.commit();
+except Exception as e:
+	print("eee")
 
 def add_item(user_id,item_title,item_description,item_tag,date_to_buy):
 	# https://stackoverflow.com/a/63091236

@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Add List</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div class="container mt-5">
+            <h1>Add Grocery List</h1>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Item name</label>
+                    <input type="text" name="item_title" class="form-control" placeholder="Item name"/>
+                </div>
+                <div class="form-group">
+                    <label>Item description</label>
+                    <input type="text" name="item_description" class="form-control" placeholder="Item description"/>
+                </div>
+                <div class="form-group">
+                    <label>Item status</label>
+                    <select class="form-control" name="item_tag">
+                        <option value="0">PENDING</option>
+                        <option value="1">BOUGHT</option>
+                        <option value="0">NOT AVAILABLE</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" name="date_to_buy" class="form-control" placeholder="Date">
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Add" class="btn btn-danger">
+                </div>
+            </form>
+        </div>
+    </body> 
+</html>

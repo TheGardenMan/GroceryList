@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Update List</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container mt-5">
+            <h1>Update Grocery List</h1>
+            <form method="post">
+                {% csrf_token%}
+                <div class="form-group">
+                    <label>Item name</label>
+                    <input type="text" name="item_title" class="form-control" placeholder="Item name" value="{{item_details.0}}"/>
+                </div>
+                <div class="form-group">
+                    <label>Item quantity</label>
+                    <input type="text" class="form-control" name="item_description" placeholder="Item quantity" value="{{item_details.1}}"/>
+                </div>
+                <div class="form-group">
+                    <label>Item status</label>
+                    <select class="form-control" name="item_tag">
+
+                        {%ifequal item_details.2 'PENDING' %}
+                            <option value="PENDING" selected>PENDING</option>
+                            <option value="BOUGHT">BOUGHT</option>
+                            <option value="NOT AVAILABLE">NOT AVAILABLE</option>
+                        {% endifequal %}
+
+                        {%ifequal item_details.2 'BOUGHT' %}
+                            <option value="PENDING">PENDING</option>
+                            <option value="BOUGHT" selected>BOUGHT</option>
+                            <option value="NOT AVAILABLE">NOT AVAILABLE</option>
+                        {% endifequal %}
+
+                        {%ifequal item_details.2 'NOT_AVAILABLE' %}
+                            <option value="PENDING">PENDING</option>
+                            <option value="BOUGHT">BOUGHT</option>
+                            <option value="NOT AVAILABLE" selected>NOT AVAILABLE</option>
+                        {% endifequal %}
+
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" class="form-control" name="date_to_buy" placeholder="Date" value="{{item_details.3}}">
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Update" class="btn btn-danger">
+                </div>
+            </form>
+        </div>
+    </body> 
+</html>

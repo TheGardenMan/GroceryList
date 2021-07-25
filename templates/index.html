@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>View List</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    </head>
+    <body>
+        {%if deleted %}
+            <p style="color: red;">Item deleted succesfully</p>
+        {% endif %}
+
+        {%if updated %}
+            <p style="color: blue;">Item updated succesfully!</p>
+        {% endif %}
+
+
+        {%if added %}
+            <p style="color: blue;">Item added succesfully!</p>
+        {% endif %}
+        
+        {% if items %}
+        <div class="container mt-5">
+            <!-- top -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1>View Grocery List</h1>
+                </div>
+                <div class="col-lg-6 float-right">
+                    <form method="get">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <!-- Date Filtering-->
+                            <input type="date" name="date_to_buy"required  class="form-control">
+                        </div>
+                        <div class="col-lg-4">
+                            <input type="submit"  class="btn btn-danger">
+                        </div>
+                    </div>
+                    </form>
+                    </div>
+                <a href="/add_item/" class="btn btn-success">Add an item</a>
+            </div>
+            <!-- // top -->
+            <!-- Grocery Cards -->
+            <div class="row mt-4">
+                {% for item in items%}
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                          <h5 class="card-title">{{item.1}}</h5>
+                          <h6 class="card-subtitle mb-2 text-muted">{{item.2}}</h6>
+                          <h6 class="card-subtitle mb-2 text-muted">{{item.4}}</h6>
+                          <p class="text-success">{{item.3}}</p>
+                        </div>
+                      </div>        <br>
+                    <a href="/update_item/{{item.0}}" class="btn btn-success">Update</a>
+                    <a href="/delete_item/{{item.0}}" class="btn btn-danger">Delete</a>
+
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% else %}
+        {%if date_to_buy %}
+            <h1>No items exist for the date <i>{{date_to_buy}} </i></h1>
+        {% else %}
+            <h1>No items have been added</h1>
+        {% endif %}
+        <a href="/add_item/" class="btn btn-success">Add an item</a>
+        {% endif %}
+        <br>
+        <br>
+        <a href="/" class="btn btn-success">Home</a>
+        <a href="/logout" class="btn btn-success">logout</a>
+
+    </body>
+</html>

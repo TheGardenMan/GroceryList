@@ -6,18 +6,18 @@
     </head>
     <body>
         {%if deleted %}
-            <p style="color: red;">Item deleted succesfully</p>
+            <h3 style="color: red;">Item deleted succesfully</h3>
         {% endif %}
 
         {%if updated %}
-            <p style="color: blue;">Item updated succesfully!</p>
+            <h3 style="color: blue;">Item updated succesfully!</h3>
         {% endif %}
 
 
         {%if added %}
-            <p style="color: blue;">Item added succesfully!</p>
+            <h3 style="color: blue;">Item added succesfully!</h3>
         {% endif %}
-        
+
         {% if items %}
         <div class="container mt-5">
             <!-- top -->

@@ -1,5 +1,5 @@
 -- write sqlite3 queries
-create table IF NOT EXISTS 	items (item_id integer primary key autoincrement,  user_id integer,title varchar(15),description varchar(200),tag varchar(15),date_to_buy date);
+create table items (item_id integer primary key autoincrement,  user_id integer,title varchar(15),description varchar(200),tag varchar(15),date_to_buy date);
 
 insert into items (user_id,title,description,tag,date_to_buy) values (1,'banana','10pcs','pending','2021-07-24');
 
